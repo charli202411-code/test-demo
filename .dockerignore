@@ -1,0 +1,24 @@
+# 本地考核连接工具（含 OAuth 凭据），严禁进入构建上下文
+mcp-oauth/
+
+# git 与文档（不参与镜像构建）
+.git/
+.gitignore
+product-doc.md
+README.md
+mcp-config.json
+check.js
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 原型图集（评审材料，不进入镜像）与 TRAE 工具临时目录
+screenshots/
+.trae-html-share-packages/
+
+# 通用
+*.log
+node_modules/
+__pycache__/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+# 实习罗盘 · 静态原型部署
+# 评审执行：docker compose up --build，然后浏览器打开 http://localhost:8080
+# 停止：docker compose down（原型数据存于浏览器 localStorage，与容器无关）
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: internship-compass:1.0
+    container_name: internship-compass
+    ports:
+      - "8080:80"
+    restart: unless-stopped

@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "name": "110-LAB 实验室招新产品岗考核 · MCP 配置交付件",
+    "generatedAt": "2026-10-06",
+    "examServer": "https://exam.110-lab.cn/mcp",
+    "purpose": "考核交付留存：记录考核期间使用的远程 MCP 服务器配置。本文件不连接任何外部真实工具；配套原型为纯前端静态页面，运行时不发起任何网络请求，也不调用任何 MCP 服务。"
+  },
+  "mcpServers": {
+    "110-lab-assessment": {
+      "url": "https://exam.110-lab.cn/mcp",
+      "transport": "streamable-http",
+      "auth": {
+        "type": "oauth",
+        "flow": "authorization-code",
+        "note": "浏览器打开授权页，由考生本人点击允许，不由代理代为同意"
+      },
+      "serverVersion": "0.2.2",
+      "description": "110-LAB 考核状态服务：考核连接自检、考核状态读取、考核材料提交",
+      "tools": [
+        {
+          "name": "test_connection",
+          "description": "验证 MCP 连接与考生登记信息，不要求上传文件，不开始计时"
+        },
+        {
+          "name": "exam_status",
+          "description": "读取本场考核真实状态、方向、题目、截止时间、已确认仓库 SHA、直接上传同意与材料回执"
+        },
+        {
+          "name": "submit_materials",
+          "description": "提交考核材料，参数仅含 repoSha、clients、projectSummary、collaborationSummary"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "本配置仅作为考核交付件留存，原型评审演示（docker compose up --build）不依赖此文件",
+    "考核期间已通过该 MCP 完成：OAuth 授权连接、test_connection 连接自检、exam_status 状态读取",
+    "原型全部 AI 输出为本地确定性规则引擎模拟，无真实大模型 API、无后端服务、无数据库"
+  ]
+}

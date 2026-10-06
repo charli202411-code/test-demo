@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实习罗盘 · 原型图集 v1.0.1（P01–P08 / S01–S08）</title>
+<style>
+:root{--ink:#1a2233;--muted:#5b6478;--line:#e5e9f2;--brand:#3b5bfd;--brand-weak:#eef1ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.65 "PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;color:var(--ink);background:#f4f6fb;padding:32px 20px 60px}
+.wrap{max-width:1060px;margin:0 auto}
+header.cover{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px 30px;margin-bottom:14px}
+header.cover h1{font-size:26px;margin-bottom:8px}
+header.cover .sub{color:var(--muted);font-size:13.5px}
+header.cover table{border-collapse:collapse;margin-top:14px;font-size:13px;width:100%}
+header.cover td{border:1px solid var(--line);padding:6px 10px}
+header.cover td:first-child{color:var(--muted);white-space:nowrap;width:130px}
+h2.sec{font-size:18px;margin:30px 0 4px;padding-left:10px;border-left:4px solid var(--brand)}
+p.secnote{color:var(--muted);font-size:13px;margin:0 0 14px 14px}
+figure{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 16px 12px;margin:0 0 18px;break-inside:avoid}
+figcaption{margin-bottom:10px;font-size:14px}
+figcaption b{color:var(--brand)}
+figcaption .how{color:var(--muted);font-size:12.5px;display:block;margin-top:2px}
+figcaption img-tag{color:#999}
+figure img{width:100%;display:block;border:1px solid var(--line);border-radius:8px;background:#fff}
+footer{color:#9aa3b5;font-size:12px;text-align:center;margin-top:26px}
+@page{size:A4 landscape;margin:10mm}
+@media print{
+  body{background:#fff;padding:0}
+  .wrap{max-width:none}
+  figure{page-break-inside:avoid}
+  figure{page-break-after:always}
+  figure:last-of-type{page-break-after:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <h1>实习罗盘 · 原型图集</h1>
+  <div class="sub">面向首次准备实习的大学生 AI 求职准备助手（演示原型）</div>
+  <table>
+    <tr><td>图集版本</td><td>v1.0.1 —— 与可操作原型、product-doc.md 同一版本</td></tr>
+    <tr><td>画面来源</td><td>全部截图直接取自本仓库交付代码（index.html + js/ + css/）在浏览器中的真实运行画面，与 <code>docker compose up --build</code> 演示完全一致</td></tr>
+    <tr><td>编号规则</td><td>P01–P08 = 页面（product-doc.md 3.1）；S01–S08 = 弹窗与异常状态（product-doc.md 3.2）</td></tr>
+    <tr><td>演示设备</td><td>桌面浏览器 1440×900（Chrome/Edge），兼容 375×812</td></tr>
+    <tr><td>数据说明</td><td>截图中的角色（张小雨/李明）与数据均为虚构模拟内容；「AI 输出」为本地规则引擎模拟，无真实模型调用</td></tr>
+  </table>
+</header>
+
+<h2 class="sec">一、页面（P01–P08）</h2>
+<p class="secnote">路由为 hash 形式，直接在地址栏 #/ 后输入即可定位；P01 与 P08 各含两个子状态。</p>
+
+<figure>
+  <figcaption><b>P01a · 首页（空态）</b> — 首次打开应用（无本地记录）
+    <span class="how">进入方式：#/home（重置演示后即为该画面）｜截图文件：P01a-home-empty.png</span></figcaption>
+  <img src="./P01a-home-empty.png" alt="P01a 首页空态">
+</figure>
+
+<figure>
+  <figcaption><b>P01b · 首页（回访态）</b> — 已有分析记录与行动时再次打开
+    <span class="how">进入方式：#/home（存在记录时自动切换）｜截图文件：P01b-home-revisit.png</span></figcaption>
+  <img src="./P01b-home-revisit.png" alt="P01b 首页回访态">
+</figure>
+
+<figure>
+  <figcaption><b>P02 · 信息填写页（空白）</b> — 目标岗位、年级、专业、经历、技能、时间投入的结构化填写
+    <span class="how">进入方式：首页点「开始第一次差距分析」→ #/form｜截图文件：P02a-form-blank.png</span></figcaption>
+  <img src="./P02a-form-blank.png" alt="P02 信息填写页空白">
+</figure>
+
+<figure>
+  <figcaption><b>P02 · 信息填写页（已载入预置案例 A）</b> — 表单顶部可一键载入演示案例
+    <span class="how">进入方式：表单页点「载入案例 A · 张小雨」｜截图文件：P02b-form-preset.png</span></figcaption>
+  <img src="./P02b-form-preset.png" alt="P02 信息填写页预置案例">
+</figure>
+
+<figure>
+  <figcaption><b>P03 · 分析中页（loading）</b> — 分阶段进度动画（读取信息→对照岗位→生成建议），可取消
+    <span class="how">进入方式：表单提交后自动进入，模拟延时约 3 秒｜截图文件：P03-analyzing.png</span></figcaption>
+  <img src="./P03-analyzing.png" alt="P03 分析中 loading">
+</figure>
+
+<figure>
+  <figcaption><b>P04 · 结果页（差距分析 + 行动清单）</b> — 匹配度 59%、5 维差距表（含事实/推测依据标签）、5 项行动清单
+    <span class="how">进入方式：分析成功自动进入 #/result/:id（案例 A 数据）｜截图文件：P04-result.png</span></figcaption>
+  <img src="./P04-result.png" alt="P04 结果页">
+</figure>
+
+<figure>
+  <figcaption><b>P05 · 修改信息页</b> — 预填上次信息，修改后重新分析生成新记录（旧记录保留）
+    <span class="how">进入方式：P04 点「修改信息，重新分析」→ #/form?edit=1｜截图文件：P05-form-edit.png</span></figcaption>
+  <img src="./P05-form-edit.png" alt="P05 修改信息页">
+</figure>
+
+<figure>
+  <figcaption><b>P06 · 历史记录列表</b> — 倒序展示历次分析（岗位/匹配度/纠正数），可删除
+    <span class="how">进入方式：顶栏「我的记录」→ #/history｜截图文件：P06-history.png</span></figcaption>
+  <img src="./P06-history.png" alt="P06 历史记录列表">
+</figure>
+
+<figure>
+  <figcaption><b>P07 · 历史详情页</b> — 该次分析完成时的快照（含纠正记录），不随后续修改变化
+    <span class="how">进入方式：P06 点击某条记录 → #/history/:id｜截图文件：P07-history-detail.png</span></figcaption>
+  <img src="./P07-history-detail.png" alt="P07 历史详情页">
+</figure>
+
+<figure>
+  <figcaption><b>P08a · 行动进度页（空态）</b> — 尚未勾选任何行动
+    <span class="how">进入方式：顶栏「我的行动」→ #/actions（无行动时）｜截图文件：P08a-actions-empty.png</span></figcaption>
+  <img src="./P08a-actions-empty.png" alt="P08a 行动页空态">
+</figure>
+
+<figure>
+  <figcaption><b>P08b · 行动进度页（有行动）</b> — 标记完成/放弃，完成后差距与建议重算
+    <span class="how">进入方式：结果页点「加入我的行动」后查看｜截图文件：P08b-actions-list.png</span></figcaption>
+  <img src="./P08b-actions-list.png" alt="P08b 行动页有行动">
+</figure>
+
+<h2 class="sec">二、弹窗与异常状态（S01–S08）</h2>
+<p class="secnote">全部弹窗/异常状态均有对应画面，与 product-doc.md 3.2 清单一一对应。</p>
+
+<figure>
+  <figcaption><b>S01 · 必填信息不足提示</b> — 列出缺失必填项，行内红字标注，「去补充」自动定位
+    <span class="how">触发：必填项留空提交｜截图文件：S01-missing-required.png</span></figcaption>
+  <img src="./S01-missing-required.png" alt="S01 必填信息不足">
+</figure>
+
+<figure>
+  <figcaption><b>S02 · 经历为空询问弹窗</b> — 二选一：补充经历 / 进入起步建议
+    <span class="how">触发：经历区为空时提交｜截图文件：S02-no-experience.png</span></figcaption>
+  <img src="./S02-no-experience.png" alt="S02 经历为空询问">
+</figure>
+
+<figure>
+  <figcaption><b>S03 · AI 生成失败重试弹窗</b> — 模拟失败（本地引擎未返回结果），可重试或返回修改，输入不丢失
+    <span class="how">触发：勾选「模拟下一次分析失败」后提交｜截图文件：S03-fail-modal.png</span></figcaption>
+  <img src="./S03-fail-modal.png" alt="S03 AI 生成失败弹窗">
+</figure>
+
+<figure>
+  <figcaption><b>S04 · 纠正 AI 推测弹窗</b> — 显示被纠正结论，选择原因 + 填写修正说明
+    <span class="how">触发：结果页 [推测] 条目点「这不准」｜截图文件：S04-correct-modal.png</span></figcaption>
+  <img src="./S04-correct-modal.png" alt="S04 纠正 AI 推测弹窗">
+</figure>
+
+<figure>
+  <figcaption><b>S05 · 建议已更新横幅 + 纠正后结果</b> — 纠正提交后匹配度 59%→68%，右上角横幅提示 1 条修正
+    <span class="how">触发：S04 提交纠正后自动出现（横幅约 3.4 秒）｜截图文件：S05-updated-toast.png</span></figcaption>
+  <img src="./S05-updated-toast.png" alt="S05 更新横幅与纠正后结果">
+</figure>
+
+<figure>
+  <figcaption><b>S06 · 删除历史记录确认弹窗</b>
+    <span class="how">触发：我的记录点「删除」｜截图文件：S06-delete-confirm.png</span></figcaption>
+  <img src="./S06-delete-confirm.png" alt="S06 删除确认">
+</figure>
+
+<figure>
+  <figcaption><b>S07 · 清空演示数据确认弹窗</b> — 确认后恢复首次打开空态
+    <span class="how">触发：顶栏「重置演示」或 URL 加 ?reset=1｜截图文件：S07-reset-confirm.png</span></figcaption>
+  <img src="./S07-reset-confirm.png" alt="S07 重置确认">
+</figure>
+
+<figure>
+  <figcaption><b>S08 · 起步模式结果页（信息不足降级态）</b> — 无匹配度、起步标签、4 项起步行动包、时间偏紧提示
+    <span class="how">触发：S02 选「确实还没有，看起步建议」后分析完成｜截图文件：S08-starter-result.png</span></figcaption>
+  <img src="./S08-starter-result.png" alt="S08 起步模式结果页">
+</figure>
+
+<footer>实习罗盘 · 110-LAB 产品岗考核交付 · 原型图集 v1.0.1 · 截图取自交付代码运行画面，与可操作原型同版本</footer>
+</div>
+</body>
+</html>
